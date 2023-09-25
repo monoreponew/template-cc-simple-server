@@ -1,0 +1,20 @@
+load("@rules_rust//rust:defs.bzl", "rust_binary")
+load("@io_bazel_rules_docker//rust:image.bzl", "rust_image")
+load("@genrules//google_cloud_run:index.bzl", "deploy")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_binary(
+    name = "server",
+    srcs = ["main.rs"],
+)
+
+rust_image(
+    name = "server_image",
+    binary = ":server",
+)
+
+deploy(
+    name="rust_service",
+    target=":server_image",
+)

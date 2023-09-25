@@ -1,0 +1,20 @@
+actions:
+  - name: "Build"
+    container_image: ubuntu-20.04
+    triggers:
+      push:
+        branches:
+          - "main"
+      pull_request:
+        branches:
+          - "*"
+    bazel_commands:
+        - "build //..."
+  - name: "Deploy"
+    container_image: ubuntu-20.04
+    triggers:
+      push:
+        branches:
+          - "main"
+    bazel_commands:
+        - "run //server:rust_service"
