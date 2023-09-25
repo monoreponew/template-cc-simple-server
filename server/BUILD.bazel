@@ -11,7 +11,7 @@ cc_binary(
 
 cc_image(
     name = "server_image",
-    binary = ":main",
+    binary = ":server",
 )
 
 deploy(
