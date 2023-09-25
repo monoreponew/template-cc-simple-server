@@ -17,4 +17,4 @@ actions:
         branches:
           - "main"
     bazel_commands:
-        - "run //server:rust_service"
+        - "run //server:cc_service"

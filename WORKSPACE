@@ -1,18 +1,12 @@
-# Rust
+# CC
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
 http_archive(
-    name = "rules_rust",
-    sha256 = "db89135f4d1eaa047b9f5518ba4037284b43fc87386d08c1d1fe91708e3730ae",
-    urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.27.0/rules_rust-v0.27.0.tar.gz"],
-)
-
-load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains")
-
-rules_rust_dependencies()
-
-rust_register_toolchains(
-    edition = "2021",
+    name = "rules_cc",
+    urls = ["https://github.com/bazelbuild/rules_cc/releases/download/0.0.9/rules_cc-0.0.9.tar.gz"],
+    sha256 = "2037875b9a4456dce4a79d112a8ae885bbc4aad968e6587dca6e64f3a0900cdf",
+    strip_prefix = "rules_cc-0.0.9",
 )
 
 # Docker
@@ -40,11 +34,11 @@ load(
 container_repositories()
 
 load(
-    "@io_bazel_rules_docker//rust:image.bzl",
-    _rust_image_repos = "repositories",
+    "@io_bazel_rules_docker//cc:image.bzl",
+    _cc_image_repos = "repositories",
 )
 
-_rust_image_repos()
+_cc_image_repos()
 
 # Genrules
 
