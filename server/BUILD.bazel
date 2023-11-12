@@ -1,5 +1,4 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
-load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
 load("@genrules//google_cloud_run:index.bzl", "deploy")
 
 package(default_visibility = ["//visibility:public"])
@@ -9,12 +8,7 @@ cc_binary(
     srcs = ["server.cc"],
 )
 
-cc_image(
-    name = "server_image",
-    binary = ":server",
-)
-
 deploy(
     name="cc_service",
-    target=":server_image",
+    binary=":server",
 )

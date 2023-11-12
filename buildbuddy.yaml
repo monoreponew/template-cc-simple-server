@@ -9,7 +9,7 @@ actions:
         branches:
           - "*"
     bazel_commands:
-        - "build //..."
+        - "build //... --config=workflows"
   - name: "Deploy"
     container_image: ubuntu-20.04
     triggers:
@@ -17,4 +17,4 @@ actions:
         branches:
           - "main"
     bazel_commands:
-        - "run //server:cc_service"
+        - "run //server:cc_service --config=workflows"

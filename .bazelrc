@@ -1,0 +1,13 @@
+build:workflows --config=buildbuddy_bes_backend
+build:workflows --config=buildbuddy_bes_results_url
+build:workflows --config=buildbuddy_remote_cache
+build:workflows --config=buildbuddy_experimental_remote_downloader
+build:workflows --config=buildbuddy_remote_executor
+
+common --enable_bzlmod
+common --registry=file://%workspace%/registry
+common --registry=https://registry.build
+common --registry=https://bcr.bazel.build/
+
+# Uncomment if you want a local version of the genrules repo
+#common --override_module=genrules=../genrules
